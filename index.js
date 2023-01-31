@@ -43,6 +43,11 @@ const stream = ytdl(url, { filter: "audioonly" });
 const output = fs.createWriteStream(
   `${downloadsPath}/${parsedURL.query.ab_channel}${val}.mp3`
 );
-stream.pipe(output).on("finish", () => {
-  console.log(chalk.green(`The download is complete!`));
-});
+stream
+  .pipe(output)
+  .on("finish", () => {
+    console.log(chalk.green(`The download is complete!`));
+  })
+  .on("error", (err) => {
+    console.error(chalk.red(`ERROR: ${err.message}`));
+  });
