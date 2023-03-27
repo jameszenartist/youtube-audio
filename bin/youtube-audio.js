@@ -1,11 +1,20 @@
 #!/usr/bin/env node
 
-const program = require("commander");
-const pkg = require("../package.json");
+import { program } from "commander";
+import pkg from "../package.json" assert { type: "json" };
+import path from "../commands/path.js";
 
-program
-  .version(pkg.version)
-  .command("path", "Manage Youtube file path")
-  .parse(process.argv);
+program.version(pkg.version).action(path.set).parse(process.argv);
+
+// program
+//   .command("show")
+//   .description("Show Youtube link")
+//   .action(console.log(`this is the show command`));
+
+// program
+//   .command("remove")
+//   .description("Remove Youtube link")
+//   .action(path.remove);
+
 // console.log(`Hello from youtube-audio!`);
 // console.log(process.argv);

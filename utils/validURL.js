@@ -10,4 +10,4 @@ function validURL(s) {
   }
 }
 
-module.exports = { validURL };
+export default validURL;
